@@ -11,7 +11,7 @@ public class Node {
 
     private double centroX;
     private double centroY;
-    private final double RAIO_FIXO = 10;
+    private final double RAIO_FIXO = 20;
     
     private int valor;
     
@@ -26,6 +26,26 @@ public class Node {
     
     public void setCorContorno(Color corContorno) {
         this.corContorno = corContorno;
+    }
+    
+    public void setCentroX(double centroX) {
+        this.centroX = centroX;
+    }
+    
+    public void setCentroY(double centroY) {
+        this.centroY = centroY;
+    }
+    
+    public double getCentroX() {
+        return centroX;
+    }
+    
+    public double getCentroY() {
+        return centroY;
+    }
+    
+    public double getRaio() {
+        return RAIO_FIXO;
     }
     
     public void drawNode(EngineFrame e) {
