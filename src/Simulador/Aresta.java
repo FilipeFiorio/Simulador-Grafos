@@ -14,11 +14,17 @@ public class Aresta {
    
    private Color corLinha = EngineFrame.BLACK;
    
-
-   
    public Aresta(Node node1, Node node2) {
        this.node1 = node1;
        this.node2 = node2;
+   }
+   
+   public Node getNode1() {
+       return node1;
+   }
+   
+   public Node getNode2() {
+       return node2;
    }
    
    public void setCorLinha(Color corLinha) {

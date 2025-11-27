@@ -14,8 +14,9 @@ public class Grafo {
     private List<Aresta> listaAresta = new ArrayList<>();
     
     private Node nodeIni = null;
+   
     
-        public void drawGrafo(EngineFrame e) {
+    public void drawGrafo(EngineFrame e) {
         for(Aresta a : listaAresta) {
             a.drawLine(e);
         }
@@ -31,6 +32,14 @@ public class Grafo {
     
     public void addAresta(Aresta aresta) {
         listaAresta.add(aresta);
+    }
+    
+    public void removeNode(Node node) {
+        listaNode.remove(node);
+    }
+    
+    public void removeAresta(Aresta aresta) {
+        listaAresta.remove(aresta);
     }
     
     public List<Node> getListaNode() {
@@ -58,8 +67,9 @@ public class Grafo {
     }
     
     public void limpar() {
-        listaAresta = null;
-        listaNode = null;
+        listaAresta.clear();
+        listaNode.clear();
+
     }
     
 }

@@ -2,6 +2,7 @@ package Simulador;
 
 import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
 import java.awt.Color;
+import java.util.List;
 
 /**
  *
