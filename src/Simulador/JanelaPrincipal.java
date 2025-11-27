@@ -20,7 +20,6 @@ public class JanelaPrincipal extends EngineFrame {
     private Grafo grafo;
 
     private List<GuiButton> listaBotoes;
-    private List<Aresta> removerArestas;
 
     private final Color corBotoes = new Color(255, 168, 44);
     private final Color corFundo = new Color(39, 168, 170);
@@ -78,7 +77,6 @@ public class JanelaPrincipal extends EngineFrame {
         excluir = false;
 
         listaBotoes = new ArrayList<>();
-        removerArestas = new ArrayList<>();
 
         botaoCursor = new GuiButton(1050, 215, 200, 50, "CURSOR");
         botaoNode = new GuiButton(1050, 275, 95, 50, "NODE");
@@ -334,8 +332,8 @@ public class JanelaPrincipal extends EngineFrame {
             double centroY = (yFim + yIni) / 2;
             
             //tolerancia do click de 1 terco do tamanho e x e y da aresta;
-            double toleranciaClickX = centroX / 1.5;
-            double toleranciaClickY = centroY / 1.5;
+            double toleranciaClickX = Math.abs(xFim - xIni) / 3;
+            double toleranciaClickY = Math.abs(yFim - yIni) / 3;
             
             if((centroX - toleranciaClickX <= x && x <= centroX + toleranciaClickX) &&
                (centroY - toleranciaClickY <= y && y <= centroY + toleranciaClickY)) {
