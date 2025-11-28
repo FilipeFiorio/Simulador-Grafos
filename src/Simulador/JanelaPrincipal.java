@@ -44,6 +44,8 @@ public class JanelaPrincipal extends EngineFrame {
     private boolean bLargura;
 
     private Node nodeArrasto;
+    
+    private int contadorNode;
 
     public JanelaPrincipal() {
 
@@ -68,6 +70,8 @@ public class JanelaPrincipal extends EngineFrame {
         useAsDependencyForIMGUI();
 
         grafo = new Grafo();
+        
+        contadorNode = 0;
 
         desenharNode = false;
         desenharAresta = false;
@@ -170,11 +174,12 @@ public class JanelaPrincipal extends EngineFrame {
             excluir = false;
 
             grafo.limpar();
+            contadorNode = 0;
         }
 
         if (isMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
             if (desenharNode && mouseInRRect(rRectTelaDesenho)) {
-                Node novoNode = new Node(getMouseX(), getMouseY(), 10);
+                Node novoNode = new Node(getMouseX(), getMouseY(), contadorNode++);
                 grafo.addNode(novoNode);
             }
         }
@@ -255,6 +260,30 @@ public class JanelaPrincipal extends EngineFrame {
         if(isMouseButtonPressed(MOUSE_BUTTON_LEFT) && excluir) {
             Aresta arestaRemovida = getArestaMouse(grafo.getListaAresta());
             grafo.removeAresta(arestaRemovida);
+        }
+        
+        /*
+            bloco de codigo para realizar busca largura/profundidade
+        */
+        
+        if(isMouseButtonPressed(MOUSE_BUTTON_LEFT) && bLargura) {
+            Node nodeLargura = getMouseNode(grafo.getListaNode());
+            
+            if(nodeLargura != null) {
+                abrirJanela(new JanelaResultado(grafo, nodeLargura, TipoOperacao.LARGURA));
+            }
+            
+            //bLargura = false;
+        }
+        
+        if(isMouseButtonPressed(MOUSE_BUTTON_LEFT) && bProfundidade) {
+            Node nodeProfundidade = getMouseNode(grafo.getListaNode());
+            
+            if(nodeProfundidade != null) {
+                abrirJanela(new JanelaResultado(grafo, nodeProfundidade, TipoOperacao.PROFUNDIDADE));
+            }
+            
+            //bProfundidade = false;
         }
 
     }
@@ -343,10 +372,14 @@ public class JanelaPrincipal extends EngineFrame {
         
         return null;
     }
+    
+    private void abrirJanela(EngineFrame e) {
+        e.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }
 
 
     public static void main(String[] args) {
         new JanelaPrincipal();
     }
-
+    
 }

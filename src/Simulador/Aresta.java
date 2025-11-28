@@ -34,5 +34,9 @@ public class Aresta {
    public void drawLine(EngineFrame e) {
        e.drawLine(node1.getCentroX(), node1.getCentroY(), node2.getCentroX(), node2.getCentroY(), corLinha);
    }
+   
+   public void drawLineDesviado(EngineFrame e, double desvio) {
+       e.drawLine(node1.getCentroX() - desvio, node1.getCentroY() - desvio, node2.getCentroX() - desvio, node2.getCentroY() - desvio, corLinha);
+   }
 
 }
